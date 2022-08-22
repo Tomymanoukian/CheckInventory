@@ -65,18 +65,20 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException | InvalidFormatException e) {
             e.printStackTrace();
         }
-        List<Codigo> codigos = lectorDeArchivos.buscarArticulo("KNE3110");
-        //long idc = Long.parseLong("2007201111562393");
+
+        //List<Codigo> codigos = lectorDeArchivos.buscarArticulo("KNE3110");
+        long idc = Long.parseLong("2007201111562393");
+        lectorDeArchivos.buscarArticulo(idc).imprimir();
         //List<Codigo> codigos = new ArrayList<>();
         //codigos.add(lectorDeArchivos.buscarArticulo(idc));
-        if(codigos == null){
+        /*if(codigos == null){
             Toast.makeText(this, "Codigo no encontrado", Toast.LENGTH_LONG).show();
         }
         else {
             for(Codigo codigo: codigos){
                 codigo.imprimir();
             }
-        }
+        }*/
     }
 
 

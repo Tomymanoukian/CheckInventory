@@ -3,6 +3,7 @@ package com.example.checkinventory.modelo;
 
 import com.example.checkinventory.excepciones.FilasNoOrdenadasException;
 import com.example.checkinventory.excepciones.NoExisteColumnaException;
+import com.example.checkinventory.excepciones.NoExisteElArticuloException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -25,7 +26,7 @@ public class LectorDeArchivos {
     private static final String STOCK = "Suc 1";
     private static final String TALLE = "Talle";
 
-    private  Sheet sheet;
+    private final Sheet sheet;
 
     private final int IDC_INDEX;
     private final int MARCA_INDEX;
@@ -73,7 +74,7 @@ public class LectorDeArchivos {
         return index;
     }
 
-    public boolean filasOrdenadas(){
+    private boolean filasOrdenadas(){
 
         int primeraFila = sheet.getFirstRowNum() + 1;
         int ultimaFila = sheet.getLastRowNum();
@@ -97,17 +98,14 @@ public class LectorDeArchivos {
 
     public Codigo buscarArticulo(long idc){
 
-        String idcstr;
+        String idcstr = Long.toString(idc);
 
         for(Row row: sheet){
-            //if(Long.parseLong(row.getCell(IDC_INDEX).getStringCellValue()) == idc)
-            //    return new Codigo(row.getCell(IDC_INDEX).getStringCellValue(), row.getCell(MODELO_INDEX).getStringCellValue(), row.getCell(TALLE_INDEX).getStringCellValue(), row.getCell(DESCRIPCION_INDEX).getStringCellValue());
-            //Cell cell =  row.getCell(MODELO_INDEX);
-            idcstr = sheet.getRow(3).getCell(IDC_INDEX).getStringCellValue();
-
+            if(row.getCell(IDC_INDEX).getStringCellValue().equals(idcstr))
+                return new Codigo(row.getCell(IDC_INDEX).getStringCellValue(), row.getCell(MODELO_INDEX).getStringCellValue(), row.getCell(TALLE_INDEX).getStringCellValue(), row.getCell(DESCRIPCION_INDEX).getStringCellValue());
         }
 
-        return null;
+        throw new NoExisteElArticuloException();
     }
 
     public List<Codigo> buscarArticulo(String modelo){
@@ -118,7 +116,7 @@ public class LectorDeArchivos {
         Row row = sheet.getRow(index);
 
         if(index == -1)
-            return null;
+            throw new NoExisteElArticuloException();
 
         while(row.getCell(MODELO_INDEX).getStringCellValue().toLowerCase().equals(modelo)) {
             codigos.add(new Codigo(row.getCell(IDC_INDEX).getStringCellValue(), row.getCell(MODELO_INDEX).getStringCellValue(), row.getCell(TALLE_INDEX).getStringCellValue(), row.getCell(DESCRIPCION_INDEX).getStringCellValue()));
@@ -152,60 +150,6 @@ public class LectorDeArchivos {
             else inferior = centro+1;
         }
         return -1;
-    }
-    
-//BORRAR ->
-    public static void leerArchivo(File archivo) throws IOException, InvalidFormatException {
-
-        Workbook wb = WorkbookFactory.create(archivo);
-
-        //DataFormatter formatter = new DataFormatter();
-        Sheet sheet1 = wb.getSheetAt(0);
-
-        Row row1 = sheet1.getRow(2);
-        Cell cell1 = row1.getCell(3);
-
-        System.out.println("--------------------------------------------------------------------------------------");
-
-        System.out.println(cell1.getStringCellValue());
-
-        System.out.println("--------------------------------------------------------------------------------------");
-
-
-        /*for (Row row : sheet1) {
-            for (Cell cell : row) {
-                CellReference cellRef = new CellReference(row.getRowNum(), cell.getColumnIndex());
-                System.out.print(cellRef.formatAsString());
-                System.out.print(" - ");
-                // get the text that appears in the cell by getting the cell value and applying any data formats (Date, 0.00, 1.23e9, $1.23, etc)
-
-                /*String text = formatter.formatCellValue(cell);
-                System.out.println(text);*/
-
-
-                // Alternatively, get the value and format it yourself
-                /*switch (cell.getCellType()) {
-                    case STRING:
-                        System.out.println(cell.getRichStringCellValue().getString());
-                        break;
-                    case NUMERIC:
-                        if (DateUtil.isCellDateFormatted(cell)) {
-                            System.out.println(cell.getDateCellValue());
-                        } else {
-                            System.out.println(cell.getNumericCellValue());
-                        }
-                        break;
-                    case BOOLEAN:
-                        System.out.println(cell.getBooleanCellValue());
-                        break;
-                    case FORMULA:
-                        System.out.println(cell.getCellFormula());
-                        break;
-                    default:
-                        System.out.println();
-                }
-            }
-        }*/
     }
 
 }
