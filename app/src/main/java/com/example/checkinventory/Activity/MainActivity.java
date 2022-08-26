@@ -59,26 +59,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void prueba(View view){
-        LectorDeArchivos lectorDeArchivos = null;
+        /*LectorDeArchivos lectorDeArchivos = null;
         try {
             lectorDeArchivos = new LectorDeArchivos(new File(this.getFilesDir(), "listadoarticulos.xlsx"));
         } catch (IOException | InvalidFormatException e) {
             e.printStackTrace();
         }
 
-        //List<Codigo> codigos = lectorDeArchivos.buscarArticulo("KNE3110");
         long idc = Long.parseLong("2007201111562393");
-        lectorDeArchivos.buscarArticulo(idc).imprimir();
-        //List<Codigo> codigos = new ArrayList<>();
-        //codigos.add(lectorDeArchivos.buscarArticulo(idc));
-        /*if(codigos == null){
-            Toast.makeText(this, "Codigo no encontrado", Toast.LENGTH_LONG).show();
-        }
-        else {
-            for(Codigo codigo: codigos){
-                codigo.imprimir();
-            }
-        }*/
+        lectorDeArchivos.buscarArticulo(idc).imprimir();*/
+        Intent intent = new Intent(this, SeleccionDeTalle.class);
+        startActivity(intent);
     }
 
 
