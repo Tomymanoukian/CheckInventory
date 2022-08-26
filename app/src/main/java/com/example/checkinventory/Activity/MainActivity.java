@@ -8,15 +8,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.checkinventory.R;
-import com.example.checkinventory.modelo.Codigo;
 import com.example.checkinventory.modelo.GestionadorDeArchivos;
-import com.example.checkinventory.modelo.LectorDeArchivos;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -68,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         long idc = Long.parseLong("2007201111562393");
         lectorDeArchivos.buscarArticulo(idc).imprimir();*/
-        Intent intent = new Intent(this, SeleccionDeTalle.class);
+        Intent intent = new Intent(this, SeleccionDeTalleActivity.class);
         startActivity(intent);
     }
 

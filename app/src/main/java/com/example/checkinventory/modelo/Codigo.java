@@ -18,6 +18,10 @@ public class Codigo {
         return modelo.equals(otroCodigo.modelo) && talle.equals(otroCodigo.talle) && idc.equals(otroCodigo.idc);
     }
 
+    public String getTalle(){
+        return talle;
+    }
+
     public void imprimir(){
         System.out.println("idc: " + idc);
         System.out.println("modelo: " + modelo);

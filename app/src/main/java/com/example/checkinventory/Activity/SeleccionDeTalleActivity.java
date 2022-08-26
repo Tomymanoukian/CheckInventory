@@ -8,7 +8,7 @@ import android.widget.Spinner;
 
 import com.example.checkinventory.R;
 
-public class SeleccionDeTalle extends AppCompatActivity {
+public class SeleccionDeTalleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
