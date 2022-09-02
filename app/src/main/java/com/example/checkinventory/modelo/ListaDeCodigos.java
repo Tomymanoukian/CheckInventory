@@ -7,8 +7,10 @@ public class ListaDeCodigos {
 
     private List<Codigo> lista;
 
-    public ListaDeCodigos(List<Codigo> lista){
-        this.lista = lista;
+    public ListaDeCodigos(){ this.lista = new ArrayList<>(); }
+
+    public void agregarCodigo(Codigo codigo){
+        lista.add(codigo);
     }
 
     public ArrayList<String> listaDeTalles(){

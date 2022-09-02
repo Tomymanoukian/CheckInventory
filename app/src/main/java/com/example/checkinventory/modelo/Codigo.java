@@ -22,10 +22,4 @@ public class Codigo {
         return talle;
     }
 
-    public void imprimir(){
-        System.out.println("idc: " + idc);
-        System.out.println("modelo: " + modelo);
-        System.out.println("talle: " + talle);
-        System.out.println("descripcion: " + descripcion);
-    }
 }
