@@ -21,5 +21,15 @@ public class Codigo {
     public String getTalle(){
         return talle;
     }
+    public String getIdc(){
+        return idc;
+    }
+    public String getModelo(){
+        return modelo;
+    }
+    public String getDescripcion(){
+        return descripcion;
+    }
+
 
 }

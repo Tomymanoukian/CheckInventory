@@ -1,6 +1,8 @@
 package com.example.checkinventory.modelo;
 
 
+import androidx.room.Room;
+
 import com.example.checkinventory.excepciones.FilasNoOrdenadasException;
 import com.example.checkinventory.excepciones.NoExisteColumnaException;
 import com.example.checkinventory.excepciones.NoExisteElArticuloException;
@@ -153,4 +155,3 @@ public class LectorDeArchivos {
     }
 
 }
-

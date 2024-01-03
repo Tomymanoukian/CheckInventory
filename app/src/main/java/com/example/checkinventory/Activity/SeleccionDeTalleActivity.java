@@ -15,7 +15,8 @@ public class SeleccionDeTalleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_de_talle);
 
-        String colors[] = {"Red","Blue","White","Yellow","Black", "Green","Purple","Orange","Grey"};
+        getIntent();
+        String colors[] = {"aaaaaaaaaaaa","Blue","White","Yellow","Black", "Green","Purple","Orange","Grey"};
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinnerTalles);

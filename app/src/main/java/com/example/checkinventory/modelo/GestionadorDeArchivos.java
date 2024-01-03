@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
+import androidx.room.Room;
+
 import com.example.checkinventory.Activity.ErrorActivity;
 
 import java.io.File;
@@ -20,6 +22,8 @@ import java.util.List;
 
 public class GestionadorDeArchivos {
 
+    private ArticuloDao articuloDao;
+
     public static void guardarNuevoArchivo(Uri uriArchivoAGuardar, Context context) throws IOException, FileAlreadyExistsException {
         
         InputStream archivoParaGuardar = context.getContentResolver().openInputStream(uriArchivoAGuardar);
@@ -27,6 +31,10 @@ public class GestionadorDeArchivos {
 
         Files.copy(archivoParaGuardar, Paths.get(archivoCopiado.toURI()));
 
+        ArticulosDatabase db = Room.databaseBuilder(MyApplication.getAppContext(),
+                ArticulosDatabase.class, archivoCopiado.getName()).build();
+
+        ArticuloDao articuloDao = db.articuloDao();
     }
 
     public static File[] listaDeArchivos(Context context){
@@ -42,5 +50,9 @@ public class GestionadorDeArchivos {
         for(File file : context.getFilesDir().listFiles()){
             file.delete();
         }
+    }
+
+    private void crearDatabase(String nombreDB){
+
     }
 }
