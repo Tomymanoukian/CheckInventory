@@ -10,6 +10,8 @@ import androidx.room.Room;
 
 import com.example.checkinventory.Activity.ErrorActivity;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,17 +26,14 @@ public class GestionadorDeArchivos {
 
     private ArticuloDao articuloDao;
 
-    public static void guardarNuevoArchivo(Uri uriArchivoAGuardar, Context context) throws IOException, FileAlreadyExistsException {
+    public static void guardarNuevoArchivo(Uri uriArchivoAGuardar, Context context) throws IOException, FileAlreadyExistsException, InvalidFormatException {
         
         InputStream archivoParaGuardar = context.getContentResolver().openInputStream(uriArchivoAGuardar);
         File archivoCopiado = new File(context.getFilesDir(), (new File(uriArchivoAGuardar.getPath())).getName());
 
         Files.copy(archivoParaGuardar, Paths.get(archivoCopiado.toURI()));
 
-        ArticulosDatabase db = Room.databaseBuilder(MyApplication.getAppContext(),
-                ArticulosDatabase.class, archivoCopiado.getName()).build();
-
-        ArticuloDao articuloDao = db.articuloDao();
+        crearDatabase(archivoCopiado.getName(), archivoCopiado);
     }
 
     public static File[] listaDeArchivos(Context context){
@@ -52,7 +51,14 @@ public class GestionadorDeArchivos {
         }
     }
 
-    private void crearDatabase(String nombreDB){
+    private static void crearDatabase(String nombreDB, File archivo) throws IOException, InvalidFormatException {
 
+        ArticulosDatabase db = Room.databaseBuilder(MyApplication.getAppContext(),
+                ArticulosDatabase.class, nombreDB).allowMainThreadQueries().build();
+
+        ArticuloDao articuloDao = db.articuloDao();
+
+        LectorDeArchivos lectorDeArchivos = new LectorDeArchivos(archivo);
+        lectorDeArchivos.guardarArticulosEnDataBase(articuloDao);
     }
 }

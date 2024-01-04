@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.example.checkinventory.R;
 import com.example.checkinventory.modelo.GestionadorDeArchivos;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -95,6 +97,10 @@ public class ElegirArchivoActivity extends AppCompatActivity {
                 finish();
                 Intent intent = new Intent(this, ErrorActivity.class);
                 startActivity(intent);
+            }
+            catch (InvalidFormatException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Archivo  no guardado: El archivo debe ser .xlsx", Toast.LENGTH_LONG).show();
             }
 
             //BORRAR

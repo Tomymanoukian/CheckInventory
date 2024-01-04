@@ -15,10 +15,26 @@ public class Articulo {
     public String marca;
     public String modelo;
     public String descripcion;
-    public String stockOriginal;
-    public String stockChequeado;
+    public int stockOriginal;
+    public int stockChequeado;
     public String talle;
 
+    public Articulo(String idc,
+                    String marca,
+                    String modelo,
+                    String descripcion,
+                    int stockOriginal,
+                    String talle){
+
+        this.idc = idc;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.descripcion = descripcion;
+        this.stockOriginal = stockOriginal;
+        this.stockChequeado = 0;
+        this.talle = talle;
+
+    }
 
     //@ColumnInfo(name = IDC) ESTE ES EL FORMATO PARA UTILIZAR OTRO NOMBRE DE COLUMNA
     //public String idc;

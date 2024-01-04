@@ -39,7 +39,7 @@ public class LectorDeArchivos {
 
 
     public LectorDeArchivos(File archivo)
-            throws IOException, InvalidFormatException, NoExisteColumnaException, FilasNoOrdenadasException {
+            throws IOException, InvalidFormatException, NoExisteColumnaException/*, FilasNoOrdenadasException*/ {
 
         Workbook wb = WorkbookFactory.create(archivo);
         sheet = wb.getSheetAt(0);
@@ -52,9 +52,11 @@ public class LectorDeArchivos {
         STOCK_INDEX = indiceDeColumna(sheet, STOCK);
         TALLE_INDEX = indiceDeColumna(sheet, TALLE);
 
+        //YA NO ES NECESARIO VERIFICAR ORDEN PORQUE USO LA BASE DE DATOS PARA BUSCAR COSAS
+        /*
         if(!filasOrdenadas()){
             throw new FilasNoOrdenadasException();
-        }
+        }*/
 
 
     }
@@ -76,6 +78,8 @@ public class LectorDeArchivos {
         return index;
     }
 
+    //YA NO ES NECSARIO GRACIAS A LA BASE DE DATOS
+    /*
     private boolean filasOrdenadas(){
 
         int primeraFila = sheet.getFirstRowNum() + 1;
@@ -96,7 +100,7 @@ public class LectorDeArchivos {
             }
         }
         return true;
-    }
+    }*/
 
     public Codigo buscarArticulo(long idc){
 
@@ -121,7 +125,12 @@ public class LectorDeArchivos {
             throw new NoExisteElArticuloException();
 
         while(row.getCell(MODELO_INDEX).getStringCellValue().toLowerCase().equals(modelo)) {
-            codigos.add(new Codigo(row.getCell(IDC_INDEX).getStringCellValue(), row.getCell(MODELO_INDEX).getStringCellValue(), row.getCell(TALLE_INDEX).getStringCellValue(), row.getCell(DESCRIPCION_INDEX).getStringCellValue()));
+
+            codigos.add(new Codigo(row.getCell(IDC_INDEX).getStringCellValue(),
+                    row.getCell(MODELO_INDEX).getStringCellValue(),
+                    row.getCell(TALLE_INDEX).getStringCellValue(),
+                    row.getCell(DESCRIPCION_INDEX).getStringCellValue()));
+
             index += 1;
             row = sheet.getRow(index);
         }
@@ -154,4 +163,28 @@ public class LectorDeArchivos {
         return -1;
     }
 
+    public void guardarArticulosEnDataBase(ArticuloDao articuloDao){
+        int filaActual = sheet.getFirstRowNum() + 1;
+        int ultimaFila = sheet.getLastRowNum();
+        Row row;
+
+        while(filaActual <= ultimaFila) {
+
+            row = sheet.getRow(filaActual);
+
+            String talle = null;
+            Cell cellTalle = row.getCell(TALLE_INDEX);
+            if(cellTalle != null){talle = cellTalle.getStringCellValue();}
+
+            articuloDao.insert(new Articulo(row.getCell(IDC_INDEX).getStringCellValue(),
+                    row.getCell(MARCA_INDEX).getStringCellValue(),
+                    row.getCell(MODELO_INDEX).getStringCellValue(),
+                    row.getCell(DESCRIPCION_INDEX).getStringCellValue(),
+                    (int)row.getCell(STOCK_INDEX).getNumericCellValue(),
+                    talle));
+            filaActual += 1;
+        }
+
+
+    }
 }

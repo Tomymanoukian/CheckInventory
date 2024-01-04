@@ -3,7 +3,7 @@ package com.example.checkinventory.modelo;
 import android.app.Application;
 import android.content.Context;
 
-public class MyApplication extends Application {
+public class MyApplication extends Application { //Clase para poder obtener el Context de forma estática
 
     private static Context context;
 
