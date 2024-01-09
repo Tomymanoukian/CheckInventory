@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.BusquedaManualActivity">
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_Modelo"
+        android:layout_width="137dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:text="Modelo:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Modelo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_BusquedaManual_Marca" />
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_ResultadoModelo"
+        android:layout_width="225dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_BusquedaManual_Modelo"
+        app:layout_constraintTop_toTopOf="@+id/textView_BusquedaManual_Modelo" />
+
+    <TextView
+        android:id="@+id/textView_Modelo"
+        android:layout_width="136dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="28dp"
+        android:text="Ingrese modelo:"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewBusquedaManual_BusquedaManual_Descripcion"
+        android:layout_width="137dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="64dp"
+        android:text="Descripción:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Modelo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_BusquedaManual_Marca" />
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_Marca"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="196dp"
+        android:text="Marca:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Modelo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Modelo" />
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_Talle"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="36dp"
+        android:text="Talle:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.011"
+        app:layout_constraintStart_toStartOf="@+id/textView_Modelo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion" />
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_ResultadoDescripcion"
+        android:layout_width="225dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="24dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion"
+        app:layout_constraintTop_toTopOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion" />
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_ResultadoMarca"
+        android:layout_width="225dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_BusquedaManual_Marca"
+        app:layout_constraintTop_toTopOf="@+id/textView_BusquedaManual_Marca" />
+
+    <Spinner
+        android:id="@+id/spinnerTalles"
+        android:layout_width="120dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/textView_BusquedaManual_Talle"
+        app:layout_constraintTop_toTopOf="@+id/textView_BusquedaManual_Talle" />
+
+    <EditText
+        android:id="@+id/editText_Modelo"
+        android:layout_width="227dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_Modelo"
+        app:layout_constraintTop_toTopOf="@+id/textView_Modelo" />
+
+    <Button
+        android:id="@+id/button_BuscarModelo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="buscarArticulo"
+        android:text="Buscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Modelo" />
+
+    <Button
+        android:id="@+id/button_cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#EF0C0C"
+        android:text="CANCELAR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_BusquedaManual_Talle" />
+
+    <Button
+        android:id="@+id/button_aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0EDD2A"
+        android:text="ACEPTAR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toEndOf="@+id/button_cancelar"
+        app:layout_constraintTop_toTopOf="@+id/button_cancelar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

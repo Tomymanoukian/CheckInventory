@@ -46,8 +46,17 @@ public class GestionadorDeArchivos {
 
     public static void borrarTodosLosArchivos(Context context){
 
+        ArticulosDatabase db;
+        ArticuloDao articuloDao;
+
         for(File file : context.getFilesDir().listFiles()){
             file.delete();
+
+            db = Room.databaseBuilder(MyApplication.getAppContext(),
+                    ArticulosDatabase.class, file.getName()).allowMainThreadQueries().build();
+            articuloDao = db.articuloDao();
+
+            articuloDao.deleteAll();
         }
     }
 

@@ -15,7 +15,10 @@
         android:theme="@style/AppTheme"
         android:name="com.example.checkinventory.modelo.MyApplication">
         <activity
-            android:name=".Activity.SeleccionDeTalleActivity"
+            android:name=".Activity.BusquedaManualActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.SeleccionarMetodoDeBusquedaActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.ErrorActivity"

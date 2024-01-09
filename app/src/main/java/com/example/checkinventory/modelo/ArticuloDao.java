@@ -12,19 +12,30 @@ import java.util.List;
 @Dao
 public interface ArticuloDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert()
     void insert(Articulo articulo);
 
     @Delete
     void delete(Articulo articulo);
 
-    @Query("SELECT * FROM articulo")
-    LiveData<List<Articulo>> getAll();
+    @Query("DELETE FROM articulo")
+    void deleteAll();
 
     @Query("SELECT * FROM Articulo WHERE idc IN (:ArticuloIds)")
     List<Articulo> loadAllByIds(int[] ArticuloIds);
 
-    /*@Query("SELECT * FROM Articulo WHERE first_name LIKE :first AND " +
+    @Query("SELECT * FROM Articulo WHERE modelo LIKE :modeloABuscar")
+    List<Articulo> busquedaPorModelo(String modeloABuscar);
+
+    //BORRAR
+    /*@Query("SELECT * FROM Articulo WHERE modelo LIKE "KNE1016GM"")
+    List<Articulo> busquedaPorModelo();
+*/
+    @Query("SELECT * FROM articulo")
+    LiveData<List<Articulo>> getAll();
+/*
+    @Query("SELECT * FROM Articulo WHERE first_name LIKE :first AND " +
             "last_name LIKE :last LIMIT 1")
-    Articulo findByName(String first, String last);*/
+    Articulo findByName(String first, String last);
+*/
 }

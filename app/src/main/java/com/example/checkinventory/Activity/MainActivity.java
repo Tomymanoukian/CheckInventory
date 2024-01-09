@@ -52,16 +52,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void prueba(View view){
-        /*LectorDeArchivos lectorDeArchivos = null;
-        try {
-            lectorDeArchivos = new LectorDeArchivos(new File(this.getFilesDir(), "listadoarticulos.xlsx"));
-        } catch (IOException | InvalidFormatException e) {
-            e.printStackTrace();
-        }
 
-        long idc = Long.parseLong("2007201111562393");
-        lectorDeArchivos.buscarArticulo(idc).imprimir();*/
-        Intent intent = new Intent(this, SeleccionDeTalleActivity.class);
+        Intent intent = new Intent(this, SeleccionarMetodoDeBusquedaActivity.class);
         startActivity(intent);
     }
 

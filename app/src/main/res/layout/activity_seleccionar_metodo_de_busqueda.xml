@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.SeleccionarMetodoDeBusquedaActivity">
+
+
+    <TextView
+        android:id="@+id/textViewBusquedaManual_BusquedaManual_Descripcion"
+        android:layout_width="138dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
+        android:text="Archivo de busqueda:"
+        android:textAlignment="textEnd"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerArchivos"
+        android:layout_width="225dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion"
+        app:layout_constraintTop_toTopOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion" />
+
+    <Button
+        android:id="@+id/escanearCodigo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:onClick="escanearCodidoDeBarras"
+        android:text="Escanear codigo de barras"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion" />
+
+    <Button
+        android:id="@+id/ingresarCodigoManualmente_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="ingresarCodigoManualmente"
+        android:text="Ingresar código manualmente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/escanearCodigo_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>
