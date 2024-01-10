@@ -1,6 +1,7 @@
 package com.example.checkinventory.modelo;
 
 import com.example.checkinventory.excepciones.DiferentesArticulosEnUnaMismaBusquedaException;
+import com.example.checkinventory.excepciones.VariosArticulosEnLaListaException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +48,10 @@ public class ListaDeArticulos {
             if(!articulo.descripcion.equals(descripcionAnterior)) throw new DiferentesArticulosEnUnaMismaBusquedaException();
         }
         return descripcionAnterior;
+    }
+
+    public Articulo getUnicoArticulo(){
+        if(lista.size() > 1) throw new VariosArticulosEnLaListaException();
+        return lista.get(0);
     }
 }

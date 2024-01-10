@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -24,15 +25,21 @@ public interface ArticuloDao {
     @Query("SELECT * FROM Articulo WHERE idc IN (:ArticuloIds)")
     List<Articulo> loadAllByIds(int[] ArticuloIds);
 
+    @Query("SELECT * FROM Articulo WHERE IDC LIKE :idcABuscar")
+    List<Articulo> busquedaPorIDC(String idcABuscar);
+
     @Query("SELECT * FROM Articulo WHERE modelo LIKE :modeloABuscar")
     List<Articulo> busquedaPorModelo(String modeloABuscar);
 
-    //BORRAR
-    /*@Query("SELECT * FROM Articulo WHERE modelo LIKE "KNE1016GM"")
-    List<Articulo> busquedaPorModelo();
-*/
+    @Query("SELECT * FROM Articulo WHERE modelo LIKE :modeloABuscar AND talle LIKE :talleABuscar")
+    Articulo busquedaPorModeloYTalle(String modeloABuscar, String talleABuscar);
+
     @Query("SELECT * FROM articulo")
     LiveData<List<Articulo>> getAll();
+
+    @Update
+    public void actualizarArticulo(Articulo articulo);
+
 /*
     @Query("SELECT * FROM Articulo WHERE first_name LIKE :first AND " +
             "last_name LIKE :last LIMIT 1")

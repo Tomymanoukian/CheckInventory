@@ -7,6 +7,50 @@
     tools:context=".Activity.BusquedaManualActivity">
 
     <TextView
+        android:id="@+id/textView_BusquedaManual_Stock"
+        android:layout_width="200dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="40dp"
+        android:text="Stock:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Modelo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_BusquedaManual_Talle" />
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_ResultadoCantidad"
+        android:layout_width="100dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_BusquedaManual_Cantidad"
+        app:layout_constraintTop_toTopOf="@+id/textView_BusquedaManual_Cantidad" />
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_Cantidad"
+        android:layout_width="200dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="20dp"
+        android:text="cantidad revisada"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Modelo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_BusquedaManual_Stock" />
+
+    <TextView
+        android:id="@+id/textView_BusquedaManual_ResultadoStock"
+        android:layout_width="100dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_BusquedaManual_Stock"
+        app:layout_constraintTop_toTopOf="@+id/textView_BusquedaManual_Stock" />
+
+    <TextView
         android:id="@+id/textView_BusquedaManual_Modelo"
         android:layout_width="137dp"
         android:layout_height="33dp"
@@ -24,7 +68,6 @@
         android:layout_width="225dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
-        android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textView_BusquedaManual_Modelo"
         app:layout_constraintTop_toTopOf="@+id/textView_BusquedaManual_Modelo" />
@@ -59,7 +102,7 @@
         android:id="@+id/textView_BusquedaManual_Marca"
         android:layout_width="137dp"
         android:layout_height="35dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="120dp"
         android:text="Marca:"
         android:textAlignment="textEnd"
         android:textSize="24sp"
@@ -86,7 +129,6 @@
         android:layout_width="225dp"
         android:layout_height="54dp"
         android:layout_marginStart="24dp"
-        android:text="TextView"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion"
         app:layout_constraintTop_toTopOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion" />
@@ -96,7 +138,6 @@
         android:layout_width="225dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
-        android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textView_BusquedaManual_Marca"
         app:layout_constraintTop_toTopOf="@+id/textView_BusquedaManual_Marca" />
@@ -136,9 +177,10 @@
         android:id="@+id/button_cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="144dp"
         android:backgroundTint="#EF0C0C"
+        android:onClick="cerrarActivity"
         android:text="CANCELAR"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_BusquedaManual_Talle" />
@@ -148,6 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#0EDD2A"
+        android:onClick="checkearArticulo"
         android:text="ACEPTAR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.348"

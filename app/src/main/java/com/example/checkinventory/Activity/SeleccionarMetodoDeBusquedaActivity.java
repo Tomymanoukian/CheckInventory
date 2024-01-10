@@ -50,7 +50,6 @@ public class SeleccionarMetodoDeBusquedaActivity extends AppCompatActivity imple
         // An item is selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos).
         archivoDeBusqueda = parent.getItemAtPosition(pos).toString();
-        //Toast.makeText(getApplicationContext(), parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
     }
 
     @Override
