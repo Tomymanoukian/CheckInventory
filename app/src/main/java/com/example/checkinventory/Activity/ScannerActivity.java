@@ -10,9 +10,13 @@ import me.dm7.barcodescanner.zbar.ZBarScannerView;
 public class ScannerActivity extends Activity implements ZBarScannerView.ResultHandler {
 
     private ZBarScannerView mScannerView;
+    String archivoDeBusqueda;
 
     @Override
     public void onCreate(Bundle state) {
+
+        archivoDeBusqueda = getIntent().getStringExtra("archivoDeBusqueda");
+
         super.onCreate(state);
         mScannerView = new ZBarScannerView(this);    // Programmatically initialize the scanner view
         setContentView(mScannerView);                // Set the scanner view as the content view
@@ -43,6 +47,8 @@ public class ScannerActivity extends Activity implements ZBarScannerView.ResultH
         //mScannerView.resumeCameraPreview(this);
         Intent intent = new Intent(this, ResultadoScannerActivity.class);
         intent.putExtra("resultadoScanner", rawResult.getContents());
+        intent.putExtra("archivoDeBusqueda", archivoDeBusqueda);
         startActivity(intent);
+        finish();
     }
 }

@@ -3,6 +3,7 @@ package com.example.checkinventory.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,11 +16,9 @@ import com.example.checkinventory.R;
 import com.example.checkinventory.modelo.Articulo;
 import com.example.checkinventory.modelo.ArticuloDao;
 import com.example.checkinventory.modelo.ArticulosDatabase;
-import com.example.checkinventory.modelo.GestionadorDeArchivos;
 import com.example.checkinventory.modelo.ListaDeArticulos;
 import com.example.checkinventory.modelo.MyApplication;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BusquedaManualActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -38,7 +37,6 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
     private TextView textView_Stock;
     private TextView textView_CantidadRevisada;
 
-
     private Spinner spinner;
 
     @Override
@@ -56,7 +54,7 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         textView_Stock = findViewById(R.id.textView_BusquedaManual_ResultadoStock);
         textView_CantidadRevisada = findViewById(R.id.textView_BusquedaManual_ResultadoCantidad);
 
-        spinner = (Spinner) findViewById(R.id.spinnerArchivos);
+        spinner = (Spinner) findViewById(R.id.spinner_BusquedaManual_Talles);
         // Create an ArrayAdapter using the string array and a default spinner layout
 
         getIntent();
@@ -73,8 +71,6 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         ListaDeArticulos articulos = new ListaDeArticulos(busqueda);
         List<String> talles = articulos.getTalles();
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerTalles);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, talles);
         // Specify the layout to use when the list of choices appears
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
@@ -115,9 +111,9 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         articuloDao.actualizarArticulo(articulo);
 
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
-    }
 
-    public void cerrarActivity(View view){
         finish();
     }
+
+    public void cerrarActivity(View view){ finish(); }
 }

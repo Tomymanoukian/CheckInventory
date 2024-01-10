@@ -4,11 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_buscar_articulo.xml" value="0.33" />
-        <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_busqueda_manual.xml" value="0.25" />
+        <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_busqueda_manual.xml" value="0.33" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_elegir_archivo.xml" value="0.22" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_error.xml" value="0.17" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_resultado_scanner.xml" value="0.25" />
+        <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_resultado_scanner.xml" value="0.1" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_seleccion_de_talle.xml" value="0.5040650406504065" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_seleccionar_metodo_de_busqueda.xml" value="0.33" />
       </map>

@@ -7,24 +7,166 @@
     tools:context=".Activity.ResultadoScannerActivity">
 
     <TextView
-        android:id="@+id/resultado"
-        android:layout_width="172dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="96dp"
-        android:text="TextView"
+        android:id="@+id/textView_Scanner_Stock"
+        android:layout_width="200dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="40dp"
+        android:text="Stock:"
+        android:textAlignment="textEnd"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Scanner_Talle"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Scanner_Talle" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_ResultadoCantidad"
+        android:layout_width="100dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_Scanner_Cantidad"
+        app:layout_constraintTop_toTopOf="@+id/textView_Scanner_Cantidad" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_Cantidad"
+        android:layout_width="200dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="20dp"
+        android:text="cantidad revisada"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Scanner_Stock"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Scanner_Stock" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_ResultadoStock"
+        android:layout_width="100dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_Scanner_Stock"
+        app:layout_constraintTop_toTopOf="@+id/textView_Scanner_Stock" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_Modelo"
+        android:layout_width="137dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:text="Modelo:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Scanner_Marca"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Scanner_Marca" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_ResultadoModelo"
+        android:layout_width="225dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_Scanner_Modelo"
+        app:layout_constraintTop_toTopOf="@+id/textView_Scanner_Modelo" />
+
+    <TextView
+        android:id="@+id/textViewScanner_Scanner_Descripcion"
+        android:layout_width="137dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="64dp"
+        android:text="Descripción:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView_Scanner_Modelo"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Scanner_Marca" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_Marca"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="64dp"
+        android:text="Marca:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView_Scanner_Talle"
+        android:layout_width="137dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="36dp"
+        android:text="Talle:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.011"
+        app:layout_constraintStart_toStartOf="@+id/textViewScanner_Scanner_Descripcion"
+        app:layout_constraintTop_toBottomOf="@+id/textViewScanner_Scanner_Descripcion" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_ResultadoDescripcion"
+        android:layout_width="225dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="24dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewScanner_Scanner_Descripcion"
+        app:layout_constraintTop_toTopOf="@+id/textViewScanner_Scanner_Descripcion" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_ResultadoMarca"
+        android:layout_width="225dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_Scanner_Marca"
+        app:layout_constraintTop_toTopOf="@+id/textView_Scanner_Marca" />
+
+    <TextView
+        android:id="@+id/textView_Scanner_ResultadoTalle"
+        android:layout_width="120dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_Scanner_Talle"
+        app:layout_constraintTop_toTopOf="@+id/textView_Scanner_Talle"  />
+
+    <Spinner
+        android:id="@+id/spinner_Scanner_Talles"
+        android:layout_width="120dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/textView_Scanner_Talle"
+        app:layout_constraintTop_toTopOf="@+id/textView_Scanner_Talle" />
+
     <Button
-        android:id="@+id/volverAEscanear_button"
+        android:id="@+id/button_cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="120dp"
-        android:onClick="VolverAEscanear"
-        android:text="Volver a escanear"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="144dp"
+        android:backgroundTint="#EF0C0C"
+        android:onClick="cerrarActivity"
+        android:text="CANCELAR"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultado" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_Scanner_Talle" />
+
+    <Button
+        android:id="@+id/button_aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0EDD2A"
+        android:onClick="checkearArticulo"
+        android:text="ACEPTAR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toEndOf="@+id/button_cancelar"
+        app:layout_constraintTop_toTopOf="@+id/button_cancelar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

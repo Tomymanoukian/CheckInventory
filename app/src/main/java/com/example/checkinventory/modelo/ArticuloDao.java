@@ -22,11 +22,8 @@ public interface ArticuloDao {
     @Query("DELETE FROM articulo")
     void deleteAll();
 
-    @Query("SELECT * FROM Articulo WHERE idc IN (:ArticuloIds)")
-    List<Articulo> loadAllByIds(int[] ArticuloIds);
-
     @Query("SELECT * FROM Articulo WHERE IDC LIKE :idcABuscar")
-    List<Articulo> busquedaPorIDC(String idcABuscar);
+    Articulo busquedaPorIDC(String idcABuscar);
 
     @Query("SELECT * FROM Articulo WHERE modelo LIKE :modeloABuscar")
     List<Articulo> busquedaPorModelo(String modeloABuscar);
