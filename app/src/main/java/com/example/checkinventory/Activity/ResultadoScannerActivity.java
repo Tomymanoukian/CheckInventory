@@ -16,6 +16,7 @@ import com.example.checkinventory.R;
 import com.example.checkinventory.modelo.Articulo;
 import com.example.checkinventory.modelo.ArticuloDao;
 import com.example.checkinventory.modelo.ArticulosDatabase;
+import com.example.checkinventory.modelo.DatabaseHandler;
 import com.example.checkinventory.modelo.ListaDeArticulos;
 import com.example.checkinventory.modelo.MyApplication;
 
@@ -28,7 +29,8 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
     String modelo;
     String talle;
 
-    ArticuloDao articuloDao;
+    //ArticuloDao articuloDao;
+    DatabaseHandler databaseHandler;
 
     private TextView textView_modelo;
     private TextView textView_marca;
@@ -59,12 +61,10 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
 
         archivoDeBusqueda = getIntent().getStringExtra("archivoDeBusqueda");
 
-        ArticulosDatabase db = Room.databaseBuilder(MyApplication.getAppContext(),
-                ArticulosDatabase.class, archivoDeBusqueda).allowMainThreadQueries().build();
-
-        articuloDao = db.articuloDao();
+        databaseHandler = new DatabaseHandler(archivoDeBusqueda);
 
         resultadoScanner = getIntent().getStringExtra("resultadoScanner");
+        //resultadoScanner  = "1806051210414634";
 
         if(esIDC(resultadoScanner)){
             busquedaPorIdc(resultadoScanner);
@@ -93,7 +93,7 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
     }
 
     private void busquedaPorIdc(String idc){
-        Articulo articulo = articuloDao.busquedaPorIDC(idc);
+        Articulo articulo = databaseHandler.busquedaPorIDC(idc);
 
         modelo = articulo.modelo;
         talle = articulo.talle;
@@ -110,11 +110,10 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
 
     private void busquedaPorModelo(String modeloABuscar){
 
-        modelo = modeloABuscar;
-
-        List<Articulo> busqueda = articuloDao.busquedaPorModelo(modelo);
-        ListaDeArticulos articulos = new ListaDeArticulos(busqueda);
+        ListaDeArticulos articulos = databaseHandler.busquedaPorModelo(modeloABuscar);
         List<String> talles = articulos.getTalles();
+
+        modelo = modeloABuscar;
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, talles);
         // Specify the layout to use when the list of choices appears
@@ -138,7 +137,7 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
 
         talle = parent.getItemAtPosition(pos).toString();
 
-        Articulo articulo = articuloDao.busquedaPorModeloYTalle(modelo, talle);
+        Articulo articulo = databaseHandler.busquedaPorModeloYTalle(modelo, talle);
 
         textView_Stock.setText(String.valueOf(articulo.stockOriginal));
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
@@ -150,11 +149,7 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
     }
 
     public void checkearArticulo(View view){
-
-        Articulo articulo = articuloDao.busquedaPorModeloYTalle(modelo, talle);
-        articulo.checkearArticulo();
-        articuloDao.actualizarArticulo(articulo);
-
+        Articulo articulo = databaseHandler.chequearArticulo(modelo, talle);
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
 
         finish();

@@ -1,9 +1,7 @@
 package com.example.checkinventory.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,20 +12,19 @@ import android.widget.TextView;
 
 import com.example.checkinventory.R;
 import com.example.checkinventory.modelo.Articulo;
-import com.example.checkinventory.modelo.ArticuloDao;
-import com.example.checkinventory.modelo.ArticulosDatabase;
+import com.example.checkinventory.modelo.DatabaseHandler;
 import com.example.checkinventory.modelo.ListaDeArticulos;
-import com.example.checkinventory.modelo.MyApplication;
 
 import java.util.List;
 
 public class BusquedaManualActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    String archivoDeBusqueda;
-    String modelo;
-    String talle;
+    private String archivoDeBusqueda;
+    private String modelo;
+    private String talle;
 
-    ArticuloDao articuloDao;
+    //ArticuloDao articuloDao;
+    private DatabaseHandler databaseHandler;
 
     private EditText editText_Modelo;
 
@@ -45,6 +42,7 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         setContentView(R.layout.activity_busqueda_manual);
 
         archivoDeBusqueda = getIntent().getStringExtra("archivoDeBusqueda");
+        databaseHandler = new DatabaseHandler(archivoDeBusqueda);
 
         editText_Modelo = (EditText) findViewById(R.id.editText_Modelo);
 
@@ -59,16 +57,11 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
 
         getIntent();
 
-        ArticulosDatabase db = Room.databaseBuilder(MyApplication.getAppContext(),
-                ArticulosDatabase.class, archivoDeBusqueda).allowMainThreadQueries().build();
-
-        articuloDao = db.articuloDao();
-
     }
 
     public void buscarArticulo(View view){
-        List<Articulo> busqueda = articuloDao.busquedaPorModelo(editText_Modelo.getText().toString());
-        ListaDeArticulos articulos = new ListaDeArticulos(busqueda);
+
+        ListaDeArticulos articulos = databaseHandler.busquedaPorModelo(editText_Modelo.getText().toString());
         List<String> talles = articulos.getTalles();
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, talles);
@@ -93,7 +86,7 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
 
         talle = parent.getItemAtPosition(pos).toString();
 
-        Articulo articulo = articuloDao.busquedaPorModeloYTalle(modelo, talle);
+        Articulo articulo = databaseHandler.busquedaPorModeloYTalle(modelo, talle);
 
         textView_Stock.setText(String.valueOf(articulo.stockOriginal) );
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
@@ -106,10 +99,7 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
 
     public void checkearArticulo(View view){
 
-        Articulo articulo = articuloDao.busquedaPorModeloYTalle(modelo, talle);
-        articulo.checkearArticulo();
-        articuloDao.actualizarArticulo(articulo);
-
+        Articulo articulo = databaseHandler.chequearArticulo(modelo, talle);
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
 
         finish();
