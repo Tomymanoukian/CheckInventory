@@ -174,7 +174,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_Modelo" />
 
     <Button
-        android:id="@+id/button_cancelar"
+        android:id="@+id/button_BusquedaManual_cancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
@@ -186,7 +186,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_BusquedaManual_Talle" />
 
     <Button
-        android:id="@+id/button_aceptar"
+        android:id="@+id/button_BusquedaManual_aceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#0EDD2A"
@@ -194,6 +194,6 @@
         android:text="ACEPTAR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.348"
-        app:layout_constraintStart_toEndOf="@+id/button_cancelar"
-        app:layout_constraintTop_toTopOf="@+id/button_cancelar" />
+        app:layout_constraintStart_toEndOf="@+id/button_BusquedaManual_cancelar"
+        app:layout_constraintTop_toTopOf="@+id/button_BusquedaManual_cancelar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

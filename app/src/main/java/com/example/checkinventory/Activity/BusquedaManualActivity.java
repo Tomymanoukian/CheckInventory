@@ -6,15 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.checkinventory.R;
+import com.example.checkinventory.excepciones.BusquedaInfrucuosaException;
 import com.example.checkinventory.modelo.Articulo;
 import com.example.checkinventory.modelo.DatabaseHandler;
 import com.example.checkinventory.modelo.ListaDeArticulos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BusquedaManualActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -36,6 +40,9 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
 
     private Spinner spinner;
 
+    private Button botonAceptar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +60,25 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         textView_CantidadRevisada = findViewById(R.id.textView_BusquedaManual_ResultadoCantidad);
 
         spinner = (Spinner) findViewById(R.id.spinner_BusquedaManual_Talles);
-        // Create an ArrayAdapter using the string array and a default spinner layout
+
+        botonAceptar = findViewById(R.id.button_BusquedaManual_aceptar);
+        botonAceptar.setVisibility(View.GONE);
 
         getIntent();
 
     }
 
     public void buscarArticulo(View view){
+        ListaDeArticulos articulos = null;
+        try {
+            articulos = databaseHandler.busquedaPorModelo(editText_Modelo.getText().toString());
+        }
+        catch (BusquedaInfrucuosaException e){
+            borrarResultadoAnterior();
+            emitirMsjDeArticuloNoEncontrado();
+            return;
+        }
 
-        ListaDeArticulos articulos = databaseHandler.busquedaPorModelo(editText_Modelo.getText().toString());
         List<String> talles = articulos.getTalles();
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, talles);
@@ -90,6 +107,8 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
 
         textView_Stock.setText(String.valueOf(articulo.stockOriginal) );
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
+
+        botonAceptar.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -105,5 +124,25 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         finish();
     }
 
-    public void cerrarActivity(View view){ finish(); }
+    private void emitirMsjDeArticuloNoEncontrado(){
+        Toast.makeText(this, "Articulo no encotrado", Toast.LENGTH_LONG).show();
+    }
+
+    private void borrarResultadoAnterior(){
+        textView_marca.setText("");
+        textView_modelo.setText("");
+        textView_descripcion.setText("");
+        textView_Stock.setText("");
+        textView_CantidadRevisada.setText("");
+
+        List<String> talles = new ArrayList<>();
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, talles);
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        spinner.setAdapter(spinnerArrayAdapter);
+
+        botonAceptar.setVisibility(View.GONE);
+    }
+
+    private void cerrarActivity(View view){ finish(); }
 }

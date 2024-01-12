@@ -30,7 +30,7 @@ public class DatabaseHandler {
 
     public ListaDeArticulos busquedaPorModelo(String modelo){
         List<Articulo> busqueda = articuloDao.busquedaPorModelo(modelo);
-        if(busqueda == null) throw new BusquedaInfrucuosaException();
+        if(busqueda.size() == 0) throw new BusquedaInfrucuosaException();
 
         ListaDeArticulos articulos = new ListaDeArticulos(busqueda);
 

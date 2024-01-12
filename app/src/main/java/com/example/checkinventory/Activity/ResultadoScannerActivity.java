@@ -11,8 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.checkinventory.R;
+import com.example.checkinventory.excepciones.BusquedaInfrucuosaException;
 import com.example.checkinventory.modelo.Articulo;
 import com.example.checkinventory.modelo.ArticuloDao;
 import com.example.checkinventory.modelo.ArticulosDatabase;
@@ -29,7 +31,6 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
     String modelo;
     String talle;
 
-    //ArticuloDao articuloDao;
     DatabaseHandler databaseHandler;
 
     private TextView textView_modelo;
@@ -85,7 +86,7 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
         try {
             Long.parseLong(string);
         }
-        catch (NumberFormatException exception){
+        catch (NumberFormatException e){
             return false;
         }
 
@@ -93,7 +94,15 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
     }
 
     private void busquedaPorIdc(String idc){
-        Articulo articulo = databaseHandler.busquedaPorIDC(idc);
+        Articulo articulo = null;
+        try {
+            articulo = databaseHandler.busquedaPorIDC(idc);
+        }
+        catch (BusquedaInfrucuosaException e){
+            finish();
+            emitirMsjDeArticuloNoEncontrado();
+            return;
+        }
 
         modelo = articulo.modelo;
         talle = articulo.talle;
@@ -109,8 +118,16 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
     }
 
     private void busquedaPorModelo(String modeloABuscar){
+        ListaDeArticulos articulos = null;
+        try {
+            articulos = databaseHandler.busquedaPorModelo(modeloABuscar);
+        }
+        catch (BusquedaInfrucuosaException e){
+            finish();
+            emitirMsjDeArticuloNoEncontrado();
+            return;
+        }
 
-        ListaDeArticulos articulos = databaseHandler.busquedaPorModelo(modeloABuscar);
         List<String> talles = articulos.getTalles();
 
         modelo = modeloABuscar;
@@ -155,5 +172,9 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
         finish();
     }
 
-    public void cerrarActivity(View view){ finish(); }
+    private void emitirMsjDeArticuloNoEncontrado(){
+        Toast.makeText(this, "Articulo no encotrado", Toast.LENGTH_LONG).show();
+    }
+
+    private void cerrarActivity(View view){ finish(); }
 }
