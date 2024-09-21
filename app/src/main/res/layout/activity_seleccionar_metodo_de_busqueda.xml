@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/textViewBusquedaManual_BusquedaManual_Descripcion"
+        android:id="@+id/textViewBusquedaManual_Descripcion"
         android:layout_width="138dp"
         android:layout_height="41dp"
         android:layout_marginStart="4dp"
@@ -24,8 +24,8 @@
         android:layout_width="225dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
-        app:layout_constraintStart_toEndOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion"
-        app:layout_constraintTop_toTopOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion" />
+        app:layout_constraintStart_toEndOf="@+id/textViewBusquedaManual_Descripcion"
+        app:layout_constraintTop_toTopOf="@+id/textViewBusquedaManual_Descripcion" />
 
     <Button
         android:id="@+id/escanearCodigo_button"
@@ -36,7 +36,7 @@
         android:text="Escanear codigo de barras"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBusquedaManual_BusquedaManual_Descripcion" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBusquedaManual_Descripcion" />
 
     <Button
         android:id="@+id/ingresarCodigoManualmente_button"

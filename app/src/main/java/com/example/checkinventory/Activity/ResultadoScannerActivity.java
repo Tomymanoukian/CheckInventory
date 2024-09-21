@@ -33,14 +33,14 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
 
     DatabaseHandler databaseHandler;
 
-    private TextView textView_modelo;
-    private TextView textView_marca;
-    private TextView textView_descripcion;
-    private TextView textView_Stock;
-    private TextView textView_CantidadRevisada;
-    private TextView textView_Talle;
+    protected TextView textView_modelo;
+    protected TextView textView_marca;
+    protected TextView textView_descripcion;
+    protected TextView textView_Stock;
+    protected TextView textView_CantidadRevisada;
+    protected TextView textView_Talle;
 
-    private Spinner spinner;
+    protected Spinner spinner;
 
 
     @Override
@@ -65,7 +65,7 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
         databaseHandler = new DatabaseHandler(archivoDeBusqueda);
 
         resultadoScanner = getIntent().getStringExtra("resultadoScanner");
-        //resultadoScanner  = "1806051210414634";
+        resultadoScanner  = "1806051210414634";
 
         if(esIDC(resultadoScanner)){
             busquedaPorIdc(resultadoScanner);
@@ -82,7 +82,7 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
         startActivity(intent);
     }
 
-    private boolean esIDC(String string){
+    protected boolean esIDC(String string){
         try {
             Long.parseLong(string);
         }
@@ -93,7 +93,7 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
         return true;
     }
 
-    private void busquedaPorIdc(String idc){
+    protected void busquedaPorIdc(String idc){
         Articulo articulo = null;
         try {
             articulo = databaseHandler.busquedaPorIDC(idc);
@@ -117,7 +117,7 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
     }
 
-    private void busquedaPorModelo(String modeloABuscar){
+    protected void busquedaPorModelo(String modeloABuscar){
         ListaDeArticulos articulos = null;
         try {
             articulos = databaseHandler.busquedaPorModelo(modeloABuscar);
@@ -165,16 +165,16 @@ public class ResultadoScannerActivity extends AppCompatActivity implements Adapt
         // Another interface callback.
     }
 
-    public void checkearArticulo(View view){
+    public void botonAceptar(View view){
         Articulo articulo = databaseHandler.chequearArticulo(modelo, talle);
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
 
         finish();
     }
 
-    private void emitirMsjDeArticuloNoEncontrado(){
+    protected void emitirMsjDeArticuloNoEncontrado(){
         Toast.makeText(this, "Articulo no encotrado", Toast.LENGTH_LONG).show();
     }
 
-    private void cerrarActivity(View view){ finish(); }
+    protected void botonCancelar(View view){ finish(); }
 }

@@ -40,6 +40,10 @@ public class Articulo {
         stockChequeado++;
     }
 
+    public void descheckearArticulo(){
+        stockChequeado--;
+    }
+
     //@ColumnInfo(name = IDC) ESTE ES EL FORMATO PARA UTILIZAR OTRO NOMBRE DE COLUMNA
     //public String idc;
 }

@@ -19,7 +19,7 @@ import me.dm7.barcodescanner.zbar.Result;
 
 public class SeleccionarMetodoDeBusquedaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String archivoDeBusqueda;
+    protected String archivoDeBusqueda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

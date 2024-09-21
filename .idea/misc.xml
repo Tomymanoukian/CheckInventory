@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_buscar_articulo.xml" value="0.33" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_busqueda_manual.xml" value="0.33" />
+        <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_deshacer_cambios_busqueda_manual.xml" value="0.33" />
+        <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_deshacer_cambios_resultado_scanner.xml" value="0.33" />
+        <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_deshacer_cambios_seleccionar_metodo_de_busqueda.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_elegir_archivo.xml" value="0.22" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_error.xml" value="0.17" />
         <entry key="..\:/Users/tomas/AndroidStudioProjects/CheckInventory_Primer_intento/app/src/main/res/layout/activity_main.xml" value="0.25" />

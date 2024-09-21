@@ -67,4 +67,25 @@ public class DatabaseHandler {
         articuloDao.actualizarArticulo(articulo);
         return articulo;
     }
+
+    public Articulo deschequearArticulo(Articulo articulo){
+        articulo.descheckearArticulo();
+        articuloDao.actualizarArticulo(articulo);
+        return articulo;
+    }
+
+    public Articulo deschequearArticulo(String modelo, String talle){
+        Articulo articulo = articuloDao.busquedaPorModeloYTalle(modelo, talle);
+        articulo.descheckearArticulo();
+        articuloDao.actualizarArticulo(articulo);
+        return articulo;
+    }
+
+    public Articulo deschequearArticulo(String idc){
+        Articulo articulo = articuloDao.busquedaPorIDC(idc);
+        articulo.descheckearArticulo();
+        articuloDao.actualizarArticulo(articulo);
+        return articulo;
+
+    }
 }

@@ -23,24 +23,23 @@ import java.util.List;
 
 public class BusquedaManualActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private String archivoDeBusqueda;
-    private String modelo;
-    private String talle;
+    protected String archivoDeBusqueda;
+    protected String modelo;
+    protected String talle;
 
-    //ArticuloDao articuloDao;
-    private DatabaseHandler databaseHandler;
+    protected DatabaseHandler databaseHandler;
 
-    private EditText editText_Modelo;
+    protected EditText editText_Modelo;
 
-    private TextView textView_modelo;
-    private TextView textView_marca;
-    private TextView textView_descripcion;
-    private TextView textView_Stock;
-    private TextView textView_CantidadRevisada;
+    protected TextView textView_modelo;
+    protected TextView textView_marca;
+    protected TextView textView_descripcion;
+    protected TextView textView_Stock;
+    protected TextView textView_CantidadRevisada;
 
-    private Spinner spinner;
+    protected Spinner spinner;
 
-    private Button botonAceptar;
+    protected Button botonAceptar;
 
 
     @Override
@@ -116,7 +115,7 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         // Another interface callback.
     }
 
-    public void checkearArticulo(View view){
+    public void botonAceptar(View view){
 
         Articulo articulo = databaseHandler.chequearArticulo(modelo, talle);
         textView_CantidadRevisada.setText(String.valueOf(articulo.stockChequeado));
@@ -124,11 +123,11 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         finish();
     }
 
-    private void emitirMsjDeArticuloNoEncontrado(){
+    protected void emitirMsjDeArticuloNoEncontrado(){
         Toast.makeText(this, "Articulo no encotrado", Toast.LENGTH_LONG).show();
     }
 
-    private void borrarResultadoAnterior(){
+    protected void borrarResultadoAnterior(){
         textView_marca.setText("");
         textView_modelo.setText("");
         textView_descripcion.setText("");
@@ -144,5 +143,5 @@ public class BusquedaManualActivity extends AppCompatActivity implements Adapter
         botonAceptar.setVisibility(View.GONE);
     }
 
-    private void cerrarActivity(View view){ finish(); }
+    public void botonCerrar(View view){ finish(); }
 }

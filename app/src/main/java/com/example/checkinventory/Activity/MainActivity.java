@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void leerCodigo(View view){
-        Intent intent = new Intent(this, ScannerActivity.class);
+        Intent intent = new Intent(this, SeleccionarMetodoDeBusquedaActivity.class);
         startActivity(intent);
     }
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void prueba(View view){
 
-        Intent intent = new Intent(this, SeleccionarMetodoDeBusquedaActivity.class);
+        Intent intent = new Intent(this, DeshacerCambiosSeleccionarMetodoDeBusquedaActivity.class);
         startActivity(intent);
     }
 
